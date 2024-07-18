@@ -73,13 +73,13 @@ with st.sidebar:
     
     #Pour l'ajout d'espace
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    st.write(" ### Réalisé par  [Bassirou CISSE](https://github.com/cisse17) ")
+    st.write(" ### Réalisé par  [Bassirou CISSE](https://github.com/cisse17?tab=repositories) ")
     st.write("Etudiant en école d'ingénieure informatique")
     
      # Ajout GitHub and LinkedIn links 
     st.markdown("""
         <div class="social-links">
-            <a href="https://github.com/cisse17?tab=repositories" target="_blank">
+            <a href="https://github.com/cisse17/Chat-avec-pdf-LLM" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub logo">
             </a>
             <a href="https://www.linkedin.com/in/bassirou-mbacké-cissé-683529263" target="_blank">
