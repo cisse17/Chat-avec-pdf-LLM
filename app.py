@@ -127,7 +127,7 @@ def main():
             #st.write("Calcul des intégrations terminé et enregistré sur le disque.")
 
     # Accept user questions/query
-    query = st.text_input("Posez une question à propos de votre document :", placeholder="Votre question ici..." )
+    query = st.text_input("Posez une question à propos de votre document et tapez entrée:", placeholder="Votre question ici..." )
     st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)
     if query:
         if db is not None:
