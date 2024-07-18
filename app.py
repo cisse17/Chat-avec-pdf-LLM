@@ -16,10 +16,13 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import OpenAI
 
 # Load environment variables from .env
-load_dotenv()
+# load_dotenv()
+
+openai.api_key = "sk-proj-0COKWP3hqekaaWGnVvsfT3BlbkFJQgyg2E5q3UiGeRZhV3VF" # à enlever
 
 # OpenAI API key 
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = openai.api_key
+# openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     raise ValueError("La clé API OpenAI n'est pas définie. Veuillez la définir dans le fichier .env ou comme variable d'environnement.")
 
