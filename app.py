@@ -16,7 +16,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import OpenAI
 
 # Load environment variables from .env
-# load_dotenv()
+load_dotenv()
 
 
 # OpenAI API key 
