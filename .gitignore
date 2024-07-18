@@ -5,3 +5,6 @@
 # Ignore other files and directories as needed
 __pycache__/
 *.pyc
+
+# Ignore all .faiss files in the doc directory
+doc/*.faiss
