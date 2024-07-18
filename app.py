@@ -3,7 +3,8 @@ import streamlit as st
 import altair as alt
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import OpenAIEmbeddings
+# from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 import openai
 import os
@@ -11,7 +12,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 import tiktoken
 from langchain.chains.question_answering import load_qa_chain
-from langchain_community.llms import OpenAI
+# from langchain_community.llms import OpenAI
+from langchain_openai import OpenAI
 
 # Load environment variables from .env
 load_dotenv()
@@ -90,6 +92,8 @@ def main():
     st.markdown("<h1 class='main-header'>Chat avec votre document PDF</h1>", unsafe_allow_html=True)
     pdf = st.file_uploader('Joindre votre document PDF', type='pdf')
 
+    db = None
+
     if pdf is not None:
         pdf_reader = PdfReader(pdf)
         text = ""
@@ -126,11 +130,24 @@ def main():
     query = st.text_input("Posez une question à propos de votre document :", placeholder="Votre question ici..." )
     st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)
     if query:
-        docs = db.similarity_search(query=query, k=3) # recherche de similarité 
-        llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
-        chain = load_qa_chain(llm=llm, chain_type="stuff")
-        response = chain.run(input_documents=docs, question=query)
-        st.write(response)
+        if db is not None:
+            try:
+                docs = db.similarity_search(query=query, k=3) # recherche de similarité 
+                llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
+                chain = load_qa_chain(llm=llm, chain_type="stuff")
+                response = chain.invoke({"input_documents": docs, "question": query})
+                #response = chain.run(input_documents=docs, question=query) deprecated
+                # Assurez-vous que 'response' est bien une chaîne de caractères ou un dictionnaire contenant la réponse textuelle
+                if isinstance(response, dict) and 'output_text' in response:
+                     st.write(response['output_text'])
+                else:
+                     st.write(response)
+                #st.write(response)
+            except Exception as e:
+                st.write(f"Erreur lors de la recherche de similarité ou du traitement de la question: {e}")
+        else:
+            st.write("Veuillez télécharger un fichier PDF et réessayer.")
+
 
 if __name__ == "__main__":
     main()
