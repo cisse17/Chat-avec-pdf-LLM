@@ -1,6 +1,6 @@
 
 import streamlit as st
-import altair as alt
+# import altair as alt
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 # from langchain_community.embeddings import OpenAIEmbeddings
@@ -10,7 +10,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-import tiktoken
+# import tiktoken
 from langchain.chains.question_answering import load_qa_chain
 # from langchain_community.llms import OpenAI
 from langchain_openai import OpenAI
