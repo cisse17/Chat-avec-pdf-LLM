@@ -20,7 +20,6 @@ load_dotenv()
 
 
 # OpenAI API key 
-# openai_api_key = openai.api_key
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     raise ValueError("La clé API OpenAI n'est pas définie. Veuillez la définir dans le fichier .env ou comme variable d'environnement.")
