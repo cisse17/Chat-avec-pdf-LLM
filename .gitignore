@@ -8,3 +8,6 @@ __pycache__/
 
 # Ignore all .faiss files in the doc directory
 doc/*.faiss
+
+
+code.txt

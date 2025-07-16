@@ -34,7 +34,7 @@ Cette application est un chatbot alimenté par un modèle de langage (LLM) utili
 
 # Installez les dépendances :
 
-- pip install -r requirements.txt
+- pip install -r requirements.txt 
 
 # Créez un fichier .env et ajoutez votre clé API OpenAI :
 
